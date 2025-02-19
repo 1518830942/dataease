@@ -3797,7 +3797,9 @@ Scatter chart (bubble) chart: {a} (series name), {b} (data name), {c} (value arr
     please_select: 'Please select ',
     query_timeout: 'Query timeout',
     description: 'Description',
-    tips: 'Tips'
+    tips: 'Tips',
+    replication: 'BE Replica',
+    replication_tip: 'Number of BE Nodes'
   },
   sync_summary: {
     summary: 'Overview',
