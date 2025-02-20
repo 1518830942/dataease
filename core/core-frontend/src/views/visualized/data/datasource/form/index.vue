@@ -561,6 +561,7 @@ const defaultForm = {
   enableDataFill: false
 }
 const form = reactive<Form>(cloneDeep(defaultForm))
+const origin = reactive<Form>(cloneDeep(defaultForm))
 const defaultForm2 = {
   type: '',
   id: '0',
@@ -605,6 +606,7 @@ const init = (nodeInfo: Form | Param, id?: string, res?: object, supportSetKey: 
       Object.assign(form2, cloneDeep(nodeInfo))
     } else {
       Object.assign(form, cloneDeep(nodeInfo))
+      Object.assign(origin, cloneDeep(nodeInfo))
       if (form.hasOwnProperty('configuration') && form.configuration.urlType == undefined) {
         form.configuration.urlType = 'hostName'
       }
@@ -664,7 +666,11 @@ const beforeClose = () => {
     emits('refresh')
     wsCache.set('ds-new-success', false)
   }
-  if (!showFinishPage.value && ((!editDs.value && activeStep.value !== 0) || isUpdate)) {
+  if (
+    !showFinishPage.value &&
+    ((!editDs.value && activeStep.value !== 0) || isUpdate) &&
+    !(JSON.stringify(form) === JSON.stringify(origin))
+  ) {
     ElMessageBox.confirm(t('data_source.want_to_exit'), {
       confirmButtonText: t('dataset.confirm'),
       cancelButtonText: t('common.cancel'),
