@@ -3997,7 +3997,8 @@ Scatter chart (bubble) chart: {a} (series name), {b} (data name), {c} (value arr
     dynamic_partition_enable: 'Dynamic Partitioning',
     time_end: 'End',
     es_query_param_formatter_error:
-      'Query parameter format error, please enter the correct JSON format, please check'
+      'Query parameter format error, please enter the correct JSON format, please check',
+    show_task_id: 'View Task ID'
   },
   watermark: {
     support_params: 'Currently supported parameters:',

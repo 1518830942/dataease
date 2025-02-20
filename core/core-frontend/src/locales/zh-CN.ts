@@ -3901,7 +3901,8 @@ export default {
     es_params_tip: '请遵循 Elasitcsearch 的查询语法',
     dynamic_partition_enable: '动态分区',
     time_end: '结束',
-    es_query_param_formatter_error: '查询参数格式错误，请输入正确的JSON格式，请检查'
+    es_query_param_formatter_error: '查询参数格式错误，请输入正确的JSON格式，请检查',
+    show_task_id: '查看任务ID'
   },
   watermark: {
     support_params: '当前支持的参数：',
