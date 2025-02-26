@@ -4061,6 +4061,9 @@ export default {
     confirm_truncate_table: '確定要清空數據嗎？',
     add_search_condition: '添加篩選條件',
     form: {
+      set_enableDefaultTime: '默認值',
+      currentTime: '當前時間',
+      defaultTime: '固定時間',
       please_select_valid_column: '請選擇符合要求的字段',
       create_type: '創建方式',
       create_new_table: '創建新表',
