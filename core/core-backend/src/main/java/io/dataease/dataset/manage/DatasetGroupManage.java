@@ -90,9 +90,6 @@ public class DatasetGroupManage {
     public DatasetGroupInfoDTO save(DatasetGroupInfoDTO datasetGroupInfoDTO, boolean rename, boolean encode) throws Exception {
         lock.lock();
         try {
-            if (encode) {
-                DatasetUtils.dsDecode(datasetGroupInfoDTO);
-            }
             boolean isCreate;
             // 用于重命名获取pid
             if (ObjectUtils.isEmpty(datasetGroupInfoDTO.getPid()) && ObjectUtils.isNotEmpty(datasetGroupInfoDTO.getId())) {
@@ -133,6 +130,9 @@ public class DatasetGroupManage {
             }
             // node_type=dataset需要创建dataset_table和field
             if (StringUtils.equalsIgnoreCase(datasetGroupInfoDTO.getNodeType(), "dataset")) {
+                if (encode) {
+                    DatasetUtils.dsDecode(datasetGroupInfoDTO);
+                }
                 List<Long> tableIds = new ArrayList<>();
                 List<Long> fieldIds = new ArrayList<>();
                 // 解析tree，保存
@@ -141,9 +141,9 @@ public class DatasetGroupManage {
                 // 删除不要的table和field
                 datasetTableManage.deleteByDatasetGroupUpdate(datasetGroupInfoDTO.getId(), tableIds);
                 datasetTableFieldManage.deleteByDatasetGroupUpdate(datasetGroupInfoDTO.getId(), fieldIds);
-            }
-            if (encode) {
-                DatasetUtils.dsEncode(datasetGroupInfoDTO);
+                if (encode) {
+                    DatasetUtils.dsEncode(datasetGroupInfoDTO);
+                }
             }
             return datasetGroupInfoDTO;
         } catch (Exception e) {
