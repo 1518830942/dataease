@@ -2881,6 +2881,7 @@ export default {
     column_name: 'Field name'
   },
   visualization: {
+    publish_recover: 'Revert to the published version',
     publish_tips1: 'Visible after publication',
     publish_tips2: 'Available after publication {0}',
     cancel_publish_tips: 'Successfully unpublished',
