@@ -33,7 +33,7 @@ import java.util.Map;
 @RequestMapping("/datasourceDriver")
 public class DatasourceDriverServer implements DatasourceDriverApi {
 
-    @Value("${dataease.path.custom-drivers:/opt/dataease2.0/custom-drivers/}")
+    @Value("${dataease.path.custom-drivers:D:/project/work/dataeaseResource/custom-drivers/}")
     private String DRIVER_PATH;
 
     @Resource

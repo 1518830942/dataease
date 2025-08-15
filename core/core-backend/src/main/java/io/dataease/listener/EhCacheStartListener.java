@@ -11,7 +11,7 @@ public class EhCacheStartListener implements ApplicationContextInitializer<Confi
         String property = applicationContext.getEnvironment().getProperty("dataease.login_timeout", String.class, "480");
         System.setProperty("dataease.login_timeout", property);
 
-        String ehcache = ConfigUtils.getConfig("dataease.path.ehcache", "/opt/dataease2.0/cache");
+        String ehcache = ConfigUtils.getConfig("dataease.path.ehcache", "D:/project/work/dataeaseResource/cache");
         System.setProperty("dataease.path.ehcache", ehcache);
     }
 }

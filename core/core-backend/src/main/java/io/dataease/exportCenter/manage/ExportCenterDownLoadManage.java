@@ -100,7 +100,7 @@ public class ExportCenterDownLoadManage {
     @Value("${dataease.export.max.size:10}")
     private int max;
 
-    @Value("${dataease.path.exportData:/opt/dataease2.0/data/exportData/}")
+    @Value("${dataease.path.exportData:D:/project/work/dataeaseResource/exportData/}")
     private String exportData_path;
     @Resource
     private VisualizationWatermarkMapper watermarkMapper;

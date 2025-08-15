@@ -36,7 +36,7 @@ import java.util.UUID;
 @Component
 public class FontManage {
 
-    @Value("${dataease.path.font:/opt/dataease2.0/data/font/}")
+    @Value("${dataease.path.font:D:/project/work/dataeaseResource/font/}")
     private String path;
 
     @Resource
@@ -115,28 +115,29 @@ public class FontManage {
     }
 
     public void download(String file, HttpServletResponse response) {
-
-        QueryWrapper<CoreFont> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("file_trans_name", file);
-        List<CoreFont> coreFonts = coreFontMapper.selectList(queryWrapper);
-        if (CollectionUtils.isEmpty(coreFonts)) {
-            DEException.throwException("不存在的字库文件");
-        }
-
-        try {
-            response.setContentType("application/x-download");
-            response.setHeader("Content-Disposition", "attachment;filename=" + coreFonts.get(0).getFileTransName());
-            try (ServletOutputStream out = response.getOutputStream();
-                 InputStream stream = new FileInputStream(path + coreFonts.get(0).getFileTransName())) {
-                byte buff[] = new byte[1024];
-                int length;
-                while ((length = stream.read(buff)) > 0) {
-                    out.write(buff, 0, length);
-                }
-                out.flush();
+        if (StringUtils.isNotBlank(file)) {
+            QueryWrapper<CoreFont> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("file_trans_name", file);
+            List<CoreFont> coreFonts = coreFontMapper.selectList(queryWrapper);
+            if (CollectionUtils.isEmpty(coreFonts)) {
+                DEException.throwException("不存在的字库文件");
             }
-        } catch (IOException e) {
-            DEException.throwException(e.getMessage());
+
+            try {
+                response.setContentType("application/x-download");
+                response.setHeader("Content-Disposition", "attachment;filename=" + coreFonts.get(0).getFileTransName());
+                try (ServletOutputStream out = response.getOutputStream();
+                     InputStream stream = new FileInputStream(path + coreFonts.get(0).getFileTransName())) {
+                    byte buff[] = new byte[1024];
+                    int length;
+                    while ((length = stream.read(buff)) > 0) {
+                        out.write(buff, 0, length);
+                    }
+                    out.flush();
+                }
+            } catch (IOException e) {
+                DEException.throwException(e.getMessage());
+            }
         }
     }
 

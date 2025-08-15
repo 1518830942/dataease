@@ -10,7 +10,7 @@ import static io.dataease.utils.StaticResourceUtils.ensureSuffix;
 
 public class StaticResourceConstants {
 
-    public static final String FILE_PROTOCOL = "file:";
+    public static final String FILE_PROTOCOL = "file:///";
 
     public static final String FILE_SEPARATOR = File.separator;
 
@@ -41,9 +41,9 @@ public class StaticResourceConstants {
 
     public static String getHomeData() {
         if (ModelUtils.isDesktop()) {
-            return ConfigUtils.getConfig("dataease.path.data", "/opt/dataease2.0/data");
+            return ConfigUtils.getConfig("dataease.path.data", "D:/project/work/dataeaseResource");
         } else {
-            return "/opt/dataease2.0/data";
+            return "D:/project/work/dataeaseResource";
         }
     }
 }

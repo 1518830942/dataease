@@ -18,10 +18,10 @@ spring:
       config: classpath:ehcache/ehcache.xml
   data:
     redis:
-      host: 127.0.0.1
+      host: 192.168.1.25
       port: 6379
-      password: 123456
-      database: 0
+      password:
+      database: 15
   jackson:
     parser:
       allow-numeric-leading-zeros: true
@@ -34,7 +34,7 @@ mybatis:
     map-underscore-to-camel-case: true
 logging:
   file:
-    path: /opt/dataease2.0/logs/dataease
+    path: D:/project/work/dataease-log
 # sql日志生产环境注释掉
 #mybatis-plus:
 #  configuration:

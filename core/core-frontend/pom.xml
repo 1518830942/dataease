@@ -67,6 +67,15 @@
               <arguments>install</arguments>
             </configuration>
           </execution>
+          <execution>
+            <id>npm install -g win-node-env</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <arguments>install -g win-node-env</arguments>
+            </configuration>
+          </execution>
 
           <execution>
             <id>npm run build</id>
